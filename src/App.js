@@ -39,7 +39,6 @@ class App extends Component{
     this.setState({
       foodList: []
     })
-
     this.state.snakeList.forEach(this.drawSnake());
   }
 

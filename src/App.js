@@ -1,24 +1,6 @@
 import React, { Component } from 'react';
 import './App.scss';
 
-    var Width = 500;
-    var Height = 500;
-    var foodList;
-    var snakeList;
-    
-    
-    var snakeBody = {
-      width: 20,
-      height:20,
-      color: 'green'
-    }
-    var snakeFood = {
-      width: 20,
-      height: 20,
-      color: 'orange'
-    }
-    
-
 class App extends Component{
   
   constructor(){

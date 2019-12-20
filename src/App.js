@@ -18,14 +18,32 @@ import './App.scss';
       color: 'orange'
     }
     
+    var direction;
 
 class App extends Component{
-  
+
   componentDidMount(){
     // const canvas = this.refs.canvas.getContext('2d');
     this.startGame();
-  }
 
+    
+    document.onkeydown = function(event){
+      if(event.keyCode === 37){
+        direction = 0;
+        console.log('0')
+      }else if(event.keyCode === 38){
+        direction = 1;
+        console.log('1')
+      }else if(event.keyCode === 39){
+        direction = 2;
+        console.log('2')
+      }else if(event.keyCode === 40){
+        direction = 3;
+        console.log('3')
+      }
+
+    }
+  }
 
   startGame(){
     snakeList = [

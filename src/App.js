@@ -12,7 +12,7 @@ import './App.scss';
       height:20,
       color: 'green'
     }
-    var snakeFood = {
+    var Food = {
       width: 20,
       height: 20,
       color: 'orange'
@@ -36,15 +36,28 @@ class App extends Component{
 
     const canvas = this.refs.canvas.getContext('2d');
     canvas.save();
-    canvas.fillStyle = snakeBody.color;
-    snakeList.forEach(sb => {
+
+    // drawing snake
+    snakeList.forEach((sb,i) => {
+      if(i === 0){
+        canvas.fillStyle = 'black';
+      }else{
+        canvas.fillStyle = snakeBody.color;
+      }
       canvas.fillRect(sb.x,sb.y,snakeBody.width,snakeBody.height);
     }
     );
     canvas.restore();
 
-    // foodList = [];
+    // drawing food
+    foodList = [];
 
+    canvas.save();
+    canvas.fillStyle = Food.color;
+    foodList.forEach((f,i) => {
+        canvas.fillRect(f.x,f.y,Food.width,Food.height);
+    })
+    canvas.restore();
     
   }
   

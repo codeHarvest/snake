@@ -1,64 +1,60 @@
 import React, { Component } from 'react';
 import './App.scss';
 
+    // var Width = 500;
+    // var Height = 500;
+    var foodList;
+    var snakeList;
+    
+    
+    var snakeBody = {
+      width: 20,
+      height:20,
+      color: 'green'
+    }
+    var snakeFood = {
+      width: 20,
+      height: 20,
+      color: 'orange'
+    }
+    
+
 class App extends Component{
   
-  constructor(){
-    super();
-
-    this.state = {
-      snakeBody : {
-        width: 20,
-        height:20,
-        color: 'green'
-      },
-      Food: {
-        width: 20,
-        height: 20,
-        color: 'orange'
-      },
-      foodList: [],
-      snakeList:[]
-    }
-  }
-  
-  componentDidMount() {
-    let canvas = this.refs.canvas.getContext('2d');
-    canvas.font = '20px Calibri';
-    this.startGame();    
+  componentDidMount(){
+    // const canvas = this.refs.canvas.getContext('2d');
+    this.startGame();
   }
 
 
   startGame(){
-    this.setState({snakeList: [
+    snakeList = [
       {x:220,y:200},
       {x:210,y:200},
       {x:200,y:200}
-    ]});
+    ];
 
-    this.setState({
-      foodList: []
-    })
-    this.state.snakeList.forEach(this.drawSnake());
+    const canvas = this.refs.canvas.getContext('2d');
+    canvas.save();
+    canvas.fillStyle = snakeBody.color;
+    snakeList.forEach(sb => {
+      canvas.fillRect(sb.x,sb.y,snakeBody.width,snakeBody.height);
+    }
+    );
+    canvas.restore();
+
+    // foodList = [];
+
+    
   }
-
-  drawSnake(sb,i){
-    this.canvas.save();
-    this.canvas.fillStyle = this.state.snakeBody.color;
-    this.canvas.fillRect(sb.x,sb.y,this.state.snakeBody.width,this.state.snakeBody.height);
-    this.canvas.restore();
-  }
-
-  render(){
   
-    return(
-      <div className="App">
+  render(){
+    return (
+        <div className="App">
           <canvas ref="canvas" width="500" height="500" style={{border:'2px solid black'}}></canvas>
-      </div>
-    )
-
+        </div>
+      );
   }
 }
-
 
 export default App;
